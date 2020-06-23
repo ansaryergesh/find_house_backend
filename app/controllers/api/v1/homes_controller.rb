@@ -1,13 +1,13 @@
 class Api::V1::HomesController < ApplicationController
  
-        before_action :set_home, only: [:show, :update, :destroy]
-    
+     before_action :set_home, only: [:show, :update, :destroy]
+     skip_before_action :authorized, only: %i[index]
       # GET /todos
       def index
         @homes = Home.all
-        json_response(@homes)
+        render json: @homes
       end
-    
+
       # POST /homes
       def create
         @home = current_user.homes.create!(home_params)
