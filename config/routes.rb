@@ -5,8 +5,11 @@ Rails.application.routes.draw do
       resources :users, only: %i[create]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
-      # resources :houses
       resources :homes
+      # resources :users do
+      #   resources :homes
+      # end
+      get '/myHouse', to: 'homes#userHouse'
     end
   end
 end

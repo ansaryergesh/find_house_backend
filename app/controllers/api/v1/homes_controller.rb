@@ -1,6 +1,6 @@
 class Api::V1::HomesController < ApplicationController
- 
      before_action :set_home, only: [:show, :update, :destroy]
+     
      skip_before_action :authorized, only: %i[index]
       # GET /todos
       def index
@@ -8,10 +8,23 @@ class Api::V1::HomesController < ApplicationController
         render json: @homes
       end
 
+      def userHouse
+        @myHouse = current_user.homes
+        render json: @myHouse
+      end
+
+      def edit 
+        @home = Home.find(params[:id])
+      end
       # POST /homes
       def create
         @home = current_user.homes.create!(home_params)
-        json_response(@home, :created)
+        if @home.save
+            render json: @home, status: :created
+        else
+            render json: {message: 'Something went wrong'}, status: :unprocessable_entity
+        end
+
       end
     
       # GET /homes/:id
@@ -27,7 +40,7 @@ class Api::V1::HomesController < ApplicationController
     
       # DELETE /homes/:id
       def destroy
-        @home.destroy
+        @myHouse.destroy
         head :no_content
       end
     
@@ -35,12 +48,11 @@ class Api::V1::HomesController < ApplicationController
     
       def home_params
         # whitelist params
-        params.permit(:name, :description, :price)
+        params.permit(:name, :descripton, :price)
       end
     
       def set_home
         @home = Home.find(params[:id])
       end
- 
-    
+
 end
