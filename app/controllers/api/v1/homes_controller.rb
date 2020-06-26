@@ -1,6 +1,6 @@
 class Api::V1::HomesController < ApplicationController
      before_action :set_home, only: [:show, :update, :destroy]
-     
+
      skip_before_action :authorized, only: %i[index]
       # GET /todos
       def index
@@ -29,7 +29,7 @@ class Api::V1::HomesController < ApplicationController
     
       # GET /homes/:id
       def show
-        json_response(@home)
+        render json: @home
       end
     
       # PUT /homes/:id
@@ -48,7 +48,7 @@ class Api::V1::HomesController < ApplicationController
     
       def home_params
         # whitelist params
-        params.permit(:name, :descripton, :price)
+        params.permit(:name, :descripton, :price, user_id: current_user.id)
       end
     
       def set_home

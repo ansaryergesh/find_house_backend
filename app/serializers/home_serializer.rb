@@ -1,3 +1,3 @@
 class HomeSerializer < ActiveModel::Serializer
-  attributes :name, :descripton, :price
+  attributes :id, :name, :descripton, :price, :created_at
 end

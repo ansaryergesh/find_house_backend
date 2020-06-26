@@ -11,15 +11,7 @@ class Api::V1::FavouritesController < ApplicationController
         end
     end
     def index
-        if params[:user_id]
-            if params[:home_id]
-                @favourHomes = Favourite.where('user_id=? AND event_id=?', params[:user_id], params[:home_id]).first
-            end
-        else
-            @favourHomes = Favourite.all
-        end
-
-        render json: @favourHomes
+        @favourites = @favourites.favourited_by(params[:user_id]) if params[:user_id].present?
     end
 
     def destroy
