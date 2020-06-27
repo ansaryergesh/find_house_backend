@@ -1,17 +1,21 @@
 class Api::V1::FavouritesController < ApplicationController
-    before_action :set_home
+    # before_action :set_home
     before_action :fint_favour, only: [:destroy]
 
     def create
-        if favoure?
-            destroy
-        else
-            @home.favourites.create(user_id: current_user.id)
-            render json: @favour, status: :created
-        end
+       @favoure = current_user.favourites.create!(favoure_params)
+       render json: @favoure, status: :created
     end
+
     def index
-        @favourites = @favourites.favourited_by(params[:user_id]) if params[:user_id].present?
+        if current_user
+            favourites = Home.joins(:favourites).where(favourites: {user_id: current_user.id})
+
+            render json: favourites, status: :ok
+        else
+            render json: home, status: :unprocessable_entity
+        end
+
     end
 
     def destroy
@@ -20,12 +24,16 @@ class Api::V1::FavouritesController < ApplicationController
 
     private
 
+    def favoure_params
+        # whitelist params
+        params.permit(:home_id)
+    end
     def set_home
         @home = Home.find(params[:home_id])
     end
 
     def find_favour
-        @favour= @home.favourites.find(params[:id])
+        @favoure= current_user.favourites.find(params[:id])
     end
 
     def favoure?
