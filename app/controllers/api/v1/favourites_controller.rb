@@ -1,25 +1,32 @@
 class Api::V1::FavouritesController < ApplicationController
     # before_action :set_home
-    before_action :fint_favour, only: [:destroy]
+    before_action :find_favour, only: [:destroy]
 
     def create
-       @favoure = current_user.favourites.create!(favoure_params)
-       render json: @favoure, status: :created
+        @favoure = current_user.favourites.create!(favoure_params)
+        favourites = Home.joins(:favourites).where(favourites: {user_id: current_user.id})
+        render json: favourites, status: :ok
+    end
+
+    def favouriteValues
+        @favourList = current_user.favourites.find_by(home_id: params[:id])
+        render json: @favourList, status: :ok
     end
 
     def index
         if current_user
             favourites = Home.joins(:favourites).where(favourites: {user_id: current_user.id})
-
             render json: favourites, status: :ok
         else
-            render json: home, status: :unprocessable_entity
+            render json: { message: 'Please Login' }, status: :unauthorized
         end
 
     end
 
     def destroy
-        @favour.destroy
+        @favourList.destroy
+        favourites = Home.joins(:favourites).where(favourites: {user_id: current_user.id})
+        render json: favourites, status: :ok
     end
 
     private
@@ -33,10 +40,10 @@ class Api::V1::FavouritesController < ApplicationController
     end
 
     def find_favour
-        @favoure= current_user.favourites.find(params[:id])
+      @favoure= current_user.favourites.find(params[:id])
     end
 
     def favoure?
-        Favour.where(user_id: current_user.id, home_id: params[:home_id]).exists?
+        Favourites.where(user_id: current_user.id, home_id: params[:home_id]).exists?
     end
 end
