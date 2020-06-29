@@ -1,9 +1,9 @@
 class Api::V1::FavouritesController < ApplicationController
+
     def create
         @favoure = current_user.favourites.create!(favoure_params)
         favourites = Home.joins(:favourites).where(favourites: {user_id: current_user.id})
         render json: favourites, status: :ok
-        end
     end
 
     def favouriteValues
@@ -36,7 +36,6 @@ class Api::V1::FavouritesController < ApplicationController
     def favoure_params
         params.permit(:home_id)
     end
-
 
     def favoure?
         @isFavoure = Favourites.where(user_id: current_user.id, home_id: params[:id]).exists?
