@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#Favourite Controller
+# Favourite Controller
 class Api::V1::FavouritesController < ApplicationController
   def create
     @favoure = current_user.favourites.create!(favoure_params)
@@ -9,7 +9,7 @@ class Api::V1::FavouritesController < ApplicationController
     render json: favourites, status: :ok
   end
 
-  def favouriteValues
+  def favouritevalues
     render json: @is_favoure, status: :ok
   end
 
@@ -28,8 +28,8 @@ class Api::V1::FavouritesController < ApplicationController
   end
 
   def destroy
-    @favourList = current_user.favourites.find_by(home_id: params[:id])
-    @favourList.destroy
+    @favourlist = current_user.favourites.find_by(home_id: params[:id])
+    @favourlist.destroy
     favourites = Home.joins(:favourites).where(favourites:
         { user_id: current_user.id })
     render json: favourites, status: :ok
@@ -42,6 +42,7 @@ class Api::V1::FavouritesController < ApplicationController
   end
 
   def favoure?
-    @is_favoure = Favourites.where(user_id: current_user.id, home_id: params[:id]).exists?
+    @is_favoure = Favourites.where(user_id: current_user.id,
+                                   home_id: params[:id]).exists?
   end
 end

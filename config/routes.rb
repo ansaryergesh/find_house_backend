@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :users, only: %i[create]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
-      get '/favouriteValues', to: 'favourites#favouriteValues'
+      get '/favouriteValues', to: 'favourites#favouritevalues'
       resources :homes
       # resources :users do
       #   resources :homes

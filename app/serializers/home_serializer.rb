@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#Home Serializer
+# Home Serializer
 class HomeSerializer < ActiveModel::Serializer
   attributes :id, :name, :descripton, :price, :created_at
 end

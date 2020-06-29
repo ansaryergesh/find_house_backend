@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Home Controller
 class Api::V1::HomesController < ApplicationController
   before_action :set_home, only: %i[show update destroy]
 
@@ -25,7 +26,7 @@ class Api::V1::HomesController < ApplicationController
       render json: @home, status: :created
     else
       render json: { message: 'Something went wrong' },
-      status: :unprocessable_entity
+                     status: :unprocessable_entity
     end
   end
 
