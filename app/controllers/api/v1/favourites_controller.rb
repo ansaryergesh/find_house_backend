@@ -1,23 +1,26 @@
 # frozen_string_literal: true
 
+#Favourite Controller
 class Api::V1::FavouritesController < ApplicationController
   def create
     @favoure = current_user.favourites.create!(favoure_params)
-    favourites = Home.joins(:favourites).where(favourites: { user_id: current_user.id })
+    favourites = Home.joins(:favourites).where(favourites:
+        { user_id: current_user.id })
     render json: favourites, status: :ok
   end
 
   def favouriteValues
-    render json: @isFavoure, status: :ok
+    render json: @is_favoure, status: :ok
   end
 
   def show
-    render json: @isFavoure, status: :ok
+    render json: @is_favoure, status: :ok
   end
 
   def index
     if current_user
-      favourites = Home.joins(:favourites).where(favourites: { user_id: current_user.id })
+      favourites = Home.joins(:favourites).where(favourites:
+        { user_id: current_user.id })
       render json: favourites, status: :ok
     else
       render json: { message: 'Please Login' }, status: :unauthorized
@@ -27,7 +30,8 @@ class Api::V1::FavouritesController < ApplicationController
   def destroy
     @favourList = current_user.favourites.find_by(home_id: params[:id])
     @favourList.destroy
-    favourites = Home.joins(:favourites).where(favourites: { user_id: current_user.id })
+    favourites = Home.joins(:favourites).where(favourites:
+        { user_id: current_user.id })
     render json: favourites, status: :ok
   end
 
@@ -38,6 +42,6 @@ class Api::V1::FavouritesController < ApplicationController
   end
 
   def favoure?
-    @isFavoure = Favourites.where(user_id: current_user.id, home_id: params[:id]).exists?
+    @is_favoure = Favourites.where(user_id: current_user.id, home_id: params[:id]).exists?
   end
 end

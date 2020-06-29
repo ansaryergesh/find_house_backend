@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       # resources :users do
       #   resources :homes
       # end
-      get '/myHouse', to: 'homes#userHouse'
+      get '/myHouse', to: 'homes#userhouse'
       resources :favourites
     end
   end

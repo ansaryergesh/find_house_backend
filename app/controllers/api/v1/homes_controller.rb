@@ -10,9 +10,9 @@ class Api::V1::HomesController < ApplicationController
     render json: @homes
   end
 
-  def userHouse
-    @myHouse = current_user.homes
-    render json: @myHouse
+  def userhouse
+    @my_house = current_user.homes
+    render json: @my_house
   end
 
   def edit
@@ -24,7 +24,8 @@ class Api::V1::HomesController < ApplicationController
     if @home.save
       render json: @home, status: :created
     else
-      render json: { message: 'Something went wrong' }, status: :unprocessable_entity
+      render json: { message: 'Something went wrong' },
+      status: :unprocessable_entity
     end
   end
 
@@ -38,7 +39,7 @@ class Api::V1::HomesController < ApplicationController
   end
 
   def destroy
-    @myHouse.destroy
+    @my_house.destroy
     head :no_content
   end
 
