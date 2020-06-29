@@ -2,7 +2,7 @@ class Api::V1::HomesController < ApplicationController
      before_action :set_home, only: [:show, :update, :destroy]
 
      skip_before_action :authorized, only: %i[index]
-      # GET /todos
+
       def index
         @homes = Home.all
         render json: @homes
@@ -16,7 +16,7 @@ class Api::V1::HomesController < ApplicationController
       def edit 
         @home = Home.find(params[:id])
       end
-      # POST /homes
+
       def create
         @home = current_user.homes.create!(home_params)
         if @home.save
@@ -26,19 +26,16 @@ class Api::V1::HomesController < ApplicationController
         end
 
       end
-    
-      # GET /homes/:id
+
       def show
         render json: @home
       end
-    
-      # PUT /homes/:id
+ 
       def update
         @home.update(home_params)
         head :no_content
       end
-    
-      # DELETE /homes/:id
+
       def destroy
         @myHouse.destroy
         head :no_content
@@ -47,7 +44,6 @@ class Api::V1::HomesController < ApplicationController
       private
     
       def home_params
-        # whitelist params
         params.permit(:name, :descripton, :price, user_id: current_user.id)
       end
     
