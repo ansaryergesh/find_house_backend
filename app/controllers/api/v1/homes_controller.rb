@@ -5,7 +5,6 @@ module Api::
   # Home Controller
   class HomesController < ApplicationController
     before_action :set_home, only: %i[show update destroy]
-
     skip_before_action :authorized, only: %i[index]
 
     def index
