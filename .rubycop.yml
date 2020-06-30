@@ -5,10 +5,9 @@ AllCops:
     - "config/**/*"
     - "Guardfile"
     - "Rakefile"
+    - "test/*"
   DisplayCopNames: true
 
-Metrics/LineLength:
-  Max: 120
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
   Max: 20
@@ -18,19 +17,22 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  Enabled: true
+  Max: 50
   ExcludedMethods: ["describe"]
-Metrics/ModuleLength:
-  Enabled: false
+
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Style/CaseEquality:
+  Enabled: false
 
-Layout/AlignHash:
+Layout/LineLength:
+  Max: 160
+Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
-  AllowForAlignment: false
+  AllowForAlignment: true
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented

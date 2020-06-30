@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# auth controller
 module Api::V1
   class AuthController < ApplicationController
     skip_before_action :authorized, only: %i[create]
