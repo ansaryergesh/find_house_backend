@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable AlignHash
-
 class ApplicationController < ActionController::API
   before_action :authorized
 
@@ -38,7 +36,7 @@ class ApplicationController < ActionController::API
   def authorized
     unless logged_in?
       render json: { message: 'Please log in' },
-                     status: :unauthorized
+             status: :unauthorized
     end
   end
 end
