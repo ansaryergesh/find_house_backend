@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 # Home Controller
-module Api::V1
+module Api::
+  # Home Controller
   class HomesController < ApplicationController
     before_action :set_home, only: %i[show update destroy]
 

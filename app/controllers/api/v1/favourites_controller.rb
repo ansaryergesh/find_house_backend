@@ -2,6 +2,7 @@
 
 # Favourite Controller
 module Api::V1
+  # Favourite Controller
   class FavouritesController < ApplicationController
     def create
       @favoure = current_user.favourites.create!(favoure_params)

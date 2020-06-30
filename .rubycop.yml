@@ -26,6 +26,8 @@ Style/ClassAndModuleChildren:
   Enabled: false
 Style/CaseEquality:
   Enabled: false
+Style/GuardClause:
+  Enabled: false
 
 Layout/LineLength:
   Max: 160
