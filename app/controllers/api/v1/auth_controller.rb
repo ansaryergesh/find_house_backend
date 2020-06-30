@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 # rubocop:disable AlignHash
+# rubocop:enable AlignHash
 
 module Api::V1
   class AuthController < ApplicationController
