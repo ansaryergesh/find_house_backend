@@ -2,6 +2,7 @@
 
 # auth controller
 module Api::V1
+  # auth controller
   class AuthController < ApplicationController
     skip_before_action :authorized, only: %i[create]
 
