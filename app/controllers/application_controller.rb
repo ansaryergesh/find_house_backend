@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# rubocop:disable AlignHash
 
 class ApplicationController < ActionController::API
   before_action :authorized
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::API
   end
 
   def logged_in?
-    !!current_user
+    !current_user.nil?
   end
 
   def authorized
