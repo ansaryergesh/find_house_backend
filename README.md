@@ -1,9 +1,13 @@
 # Find House Backend
 
+You can find frontend of the application [here](https://github.com/ansaryergesh/find_house_frontend)
+
 ### Install, Run and Build program
 
 ```
 $ bundle install --without production
+
+$ rake db:setup
 
 $ rails db:migrate
 
@@ -15,6 +19,10 @@ $ rails s -p 3002
 
 - Ruby on Rails API
 - JWT Auth Token
+
+## Live Demo
+
+[Live Demo](https://guarded-hamlet-33539.herokuapp.com/api/v1/profile)
 
 ## Author:
 
