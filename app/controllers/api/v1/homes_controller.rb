@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# rubocop:disable AlignHash
 
 # Home Controller
 module Api::V1
@@ -28,7 +27,7 @@ module Api::V1
         render json: @home, status: :created
       else
         render json: { message: 'Something went wrong' },
-                      status: :unprocessable_entity
+               status: :unprocessable_entity
       end
     end
 
