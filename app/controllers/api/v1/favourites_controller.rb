@@ -5,10 +5,10 @@ module Api::V1
   # Favourite Controller
   class FavouritesController < ApplicationController
     def create
-      @favoure = current_user.favourites.create!(favoure_params)
-      favourites = Home.joins(:favourites).where(favourites:
-          { user_id: current_user.id })
-      render json: favourites, status: :ok
+        @favoure = current_user.favourites.create!(favoure_params)
+        favourites = Home.joins(:favourites).where(favourites:
+            { user_id: current_user.id })
+        render json: favourites, status: :ok
     end
 
     def favouritevalues
