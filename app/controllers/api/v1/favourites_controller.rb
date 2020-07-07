@@ -11,10 +11,6 @@ module Api::V1
         render json: favourites, status: :ok
     end
 
-    def favouritevalues
-      render json: @is_favoure, status: :ok
-    end
-
     def show
       render json: @is_favoure, status: :ok
     end
@@ -44,8 +40,9 @@ module Api::V1
     end
 
     def favoure?
-      @is_favoure = Favourites.where(user_id: current_user.id,
+      @is_favoure = Favourite.where(user_id: current_user.id,
                                      home_id: params[:id]).exists?
+      render json: @is_favoure, status: :ok
     end
   end
 end

@@ -17,14 +17,14 @@ module Api::V1
         render json: { user: UserSerializer.new(@user),
                        jwt: @token }, status: :created
       else
-        render json: @user.errors.full_messages, status: :unprocessable_entity
+        render json: {message: @user.errors.full_messages}, status: :unprocessable_entity
       end
     end
 
     private
 
     def user_params
-      params.require(:user).permit(:username, :password, :bio, :avatar)
+      params.permit(:username, :password, :bio, :avatar)
     end
   end
 end

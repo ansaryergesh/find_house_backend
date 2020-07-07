@@ -14,7 +14,7 @@ module Api::V1
 
     def userhouse
       @my_house = current_user.homes
-      render json: @my_house
+      render json: @my_house, status: :ok
     end
 
     def edit
@@ -44,7 +44,7 @@ module Api::V1
     private
 
     def home_params
-      params.permit(:name, :descripton, :price, user_id: current_user.id)
+      params.permit(:name, :descripton, :price)
     end
 
     def set_home
