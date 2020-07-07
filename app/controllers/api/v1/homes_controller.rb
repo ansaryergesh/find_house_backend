@@ -23,8 +23,12 @@ module Api::V1
 
     def create
       @home = current_user.homes.create!(home_params)
-      renderlist = Home.all
-      render json: renderlist, status: :ok
+      if @home.valid?
+        renderlist = Home.all
+        render json: renderlist, status: :ok
+      else
+        render json: {message: @home.errors.full_messages}, status: :unprocessable_entity
+      end
     end
 
     def show
