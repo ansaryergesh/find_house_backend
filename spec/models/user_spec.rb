@@ -24,4 +24,9 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
   end
+
+  describe "Associations" do
+    it { should have_many(:homes).dependent(:destroy) }
+    it { should have_many(:favourites).dependent(:destroy) }
+  end
 end
