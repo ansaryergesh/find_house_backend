@@ -25,8 +25,11 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "Associations" do
+  describe "Associations and Validation" do
     it { should have_many(:homes).dependent(:destroy) }
     it { should have_many(:favourites).dependent(:destroy) }
+    it { should validate_presence_of(:username) }
+    it { should validate_presence_of(:bio) }
+    it { should validate_presence_of(:password) }
   end
 end
