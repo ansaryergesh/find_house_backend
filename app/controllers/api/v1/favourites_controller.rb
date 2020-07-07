@@ -6,7 +6,7 @@ module Api::V1
   class FavouritesController < ApplicationController
     def create
       if favoure?
-        render json: {message: 'Already added'}, status: :unprocessable_entity
+        render json: { message: 'Already added' }, status: :unprocessable_entity
       else
         @favoure = current_user.favourites.create!(favoure_params)
         favourites = Home.joins(:favourites).where(favourites:
@@ -17,9 +17,9 @@ module Api::V1
 
     def show
       if favoure?
-        render json: {status: false}, status: :ok
+        render json: { status: false }, status: :ok
       else
-        render json: {status: true}, status: :ok
+        render json: { status: true }, status: :ok
       end
     end
 
@@ -49,7 +49,7 @@ module Api::V1
 
     def favoure?
       @is_favoure = Favourite.where(user_id: current_user.id,
-                                     home_id: params[:id]).exists?
+                                    home_id: params[:id]).exists?
     end
   end
 end

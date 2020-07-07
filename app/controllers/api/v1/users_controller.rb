@@ -17,7 +17,7 @@ module Api::V1
         render json: { user: UserSerializer.new(@user),
                        jwt: @token }, status: :created
       else
-        render json: {message: @user.errors.full_messages}, status: :unprocessable_entity
+        render json: { message: @user.errors.full_messages }, status: :unprocessable_entity
       end
     end
 

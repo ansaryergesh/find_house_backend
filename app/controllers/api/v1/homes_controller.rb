@@ -27,7 +27,7 @@ module Api::V1
         renderlist = Home.all
         render json: renderlist, status: :ok
       else
-        render json: {message: @home.errors.full_messages}, status: :unprocessable_entity
+        render json: { message: @home.errors.full_messages }, status: :unprocessable_entity
       end
     end
 
