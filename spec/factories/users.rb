@@ -1,7 +1,7 @@
 FactoryBot.define do
     factory :user do
-      username { Faker::Name.name }
-      bio { 'Hello world' }
+      username { 'testuser' }
+      bio { 'Biography' }
       password { 'password' }
     end
 end

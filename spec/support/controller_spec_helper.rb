@@ -2,7 +2,7 @@ module ControllerSpecHelper
     def encode_token(payload)
       JWT.encode(payload, 'my_s3cr3t')
     end
-
+    
     def token_generator(user_id)
       encode_token(user_id: user_id)
     end

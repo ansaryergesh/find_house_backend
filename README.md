@@ -6,6 +6,14 @@ You can find frontend of the application [here](https://github.com/ansaryergesh/
 
 This is an API writen on Ruby on Rails for Find House project. Here are the project[requirements](https://www.notion.so/Final-Capstone-Project-Find-Your-House-backend-only-variant-f3581ebfeb3341deafd7617c5b9d934d). Used JSON Web Token Authentication for user controller.
 
+## Models
+
+API contains three models:
+
+- User
+- Home
+- Favourite
+
 ### Install, Run and Build program
 
 ```
@@ -16,6 +24,13 @@ $ rake db:setup
 $ rails db:migrate
 
 $ rails s -p 3002
+
+```
+
+## Check Testing
+
+```
+$ rspec
 
 ```
 
