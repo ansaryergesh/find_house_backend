@@ -27,6 +27,39 @@ $ rails s -p 3002
 
 ```
 
+## Routes that exists
+
+User Route(Authentication)
+
+```
+http://localhost:3002/api/v1/users (POST) -> Registration: create new user
+
+http://localhost:3002/api/v1/login (POST) -> Login into the system
+
+http://localhost:3002/api/v1/profile (GET) -> Get user information if it is logged in
+
+```
+
+Home Route
+
+```
+http://localhost:3002/api/v1/homes (GET) -> Returns all the homes
+
+http://localhost:3002/api/v1/homes (POST) -> If user logged in, user can post home
+
+```
+
+Favourite Route
+
+```
+http://localhost:3002/api/v1/favourites (GET) -> Returns all the favourites if user logged in
+
+http://localhost:3002/api/v1/favourites (POST) -> Add home in favourite list if user logged in
+
+http://localhost:3002/api/v1/favourites/homeId (Delete) -> Delete home from favourite list by its id
+
+```
+
 ## Check Testing
 
 ```
