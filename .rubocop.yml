@@ -37,6 +37,8 @@ Style/AndOr:
   Enabled: false
 Style/DefWithParentheses:
   Enabled: false
+Style/GuardClause:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
