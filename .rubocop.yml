@@ -39,6 +39,8 @@ Style/DefWithParentheses:
   Enabled: false
 Style/GuardClause:
   Enabled: false
+Lint/NonDeterministicRequireOrder:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
