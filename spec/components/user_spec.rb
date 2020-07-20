@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'User API', type: :request do
@@ -5,8 +7,8 @@ RSpec.describe 'User API', type: :request do
   let(:headers) { valid_headers }
   let(:user) { FactoryBot.create(:user) }
   let(:user_id) { user.id }
-  let(:valid_attributes) {  {username: 'testuser', password: 'password', bio: 'Biography'}  }
-  
+  let(:valid_attributes) { { username: 'testuser', password: 'password', bio: 'Biography' } }
+
   # Test suite for POST /users
   describe 'POST /api/v1/users' do
     context 'when the request is valid' do
@@ -20,8 +22,7 @@ RSpec.describe 'User API', type: :request do
       end
     end
     context 'when the request is invalid' do
-      before { post '/api/v1/users', params:  { username: '', bio: 'Bio Hello', password: 'password' }  }
-
+      before { post '/api/v1/users', params: { username: '', bio: 'Bio Hello', password: 'password' } }
 
       it 'Returns an error message' do
         expect(json['message'])
