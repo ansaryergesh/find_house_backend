@@ -27,6 +27,10 @@ $ rails s -p 3002
 
 ```
 
+## Postman
+
+Download Postman from [here](https://www.postman.com/downloads/) and using this application check how the RESTFull API works
+
 ## Routes that exists
 
 User Route(Authentication)
