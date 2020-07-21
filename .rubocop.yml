@@ -35,9 +35,9 @@ Style/EachForSimpleLoop:
   Enabled: false
 Style/AndOr:
   Enabled: false
-Style/GuardClause:
-  Enabled: false
 Style/DefWithParentheses:
+  Enabled: false
+Style/GuardClause:
   Enabled: false
 
 Layout/HashAlignment:
