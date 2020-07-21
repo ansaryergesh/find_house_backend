@@ -29,8 +29,8 @@ RSpec.describe Home, type: :model do
     end
   end
   describe 'Associations' do
-    it { should belong_to(:user) }
-    it { should have_many(:favourites) }
+    it { should belong_to(:user).dependent(false)}
+    it { should have_many(:favourites).dependent(:destroy)}
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:descripton) }
     it { should validate_presence_of(:price) }
