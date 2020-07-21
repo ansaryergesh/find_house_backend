@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before { FactoryBot.create(:user) }
   before :each do
     @user = User.create(username: 'qwerty', password: 'password', bio: 'My name is qwertyasas')
   end
@@ -14,7 +15,7 @@ RSpec.describe User, type: :model do
 
   context 'invalid User' do
     it 'has a unique username' do
-      @user = User.create(username: 'ansar', password: 'password', bio: 'My name is Ansar')
+      @user = User.create(username: 'testuser', password: 'password', bio: 'My name is Ansar')
       @user.invalid?
       expect(@user.errors[:username]).to include('has already been taken')
     end
